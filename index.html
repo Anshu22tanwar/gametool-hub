@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GameTool Hub - Free Gaming Tools</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:#0b1020;
+  color:white;
+}
+
+header{
+  padding:20px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#111831;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.logo{
+  font-size:25px;
+  font-weight:bold;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:20px;
+}
+
+.hero{
+  text-align:center;
+  padding:80px 20px;
+  background:linear-gradient(135deg,#151d3b,#202b55);
+}
+
+.hero h1{
+  font-size:48px;
+  margin-bottom:15px;
+}
+
+.hero p{
+  color:#c9d0e8;
+  margin-bottom:25px;
+}
+
+.search{
+  width:90%;
+  max-width:550px;
+  padding:15px;
+  border:0;
+  border-radius:30px;
+  outline:none;
+  font-size:16px;
+}
+
+section{
+  padding:50px 7%;
+}
+
+h2{
+  text-align:center;
+  margin-bottom:30px;
+  font-size:32px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:#151d36;
+  padding:25px;
+  border-radius:15px;
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  background:#1d2747;
+}
+
+.card h3{
+  margin-bottom:10px;
+}
+
+.card p{
+  color:#b8c0d8;
+  margin-bottom:18px;
+}
+
+button{
+  border:0;
+  padding:11px 18px;
+  border-radius:8px;
+  cursor:pointer;
+  background:#6c5ce7;
+  color:white;
+  font-weight:bold;
+}
+
+button:hover{
+  opacity:.85;
+}
+
+.tool{
+  max-width:650px;
+  margin:20px auto;
+  background:#151d36;
+  padding:25px;
+  border-radius:15px;
+}
+
+input,textarea{
+  width:100%;
+  padding:12px;
+  margin:8px 0;
+  border:0;
+  border-radius:8px;
+  outline:none;
+}
+
+textarea{
+  min-height:120px;
+}
+
+.result{
+  margin-top:15px;
+  padding:15px;
+  background:#0b1020;
+  border-radius:8px;
+  word-break:break-word;
+}
+
+footer{
+  text-align:center;
+  padding:30px;
+  background:#111831;
+  color:#aeb6d0;
+}
+
+.hidden{
+  display:none;
+}
+
+@media(max-width:600px){
+  .hero h1{
+    font-size:34px;
+  }
+
+  nav a{
+    margin-left:8px;
+    font-size:14px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🎮 GameTool Hub</div>
+
+  <nav>
+    <a href="#games">Games</a>
+    <a href="#tools">Tools</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Gaming + Free Tools</h1>
+  <p>Play, calculate, generate and explore useful tools — completely free.</p>
+
+  <input
+    id="search"
+    class="search"
+    type="text"
+    placeholder="Search games or tools..."
+    onkeyup="searchCards()"
+  >
+</section>
+
+<section id="games">
+  <h2>🎮 Gaming</h2>
+
+  <div class="grid">
+
+    <div class="card searchable">
+      <h3>🎲 Dice Roller</h3>
+      <p>Roll a virtual dice.</p>
+      <button onclick="rollDice()">Roll Dice</button>
+      <div id="diceResult" class="result">🎲</div>
+    </div>
+
+    <div class="card searchable">
+      <h3>🪙 Coin Flip</h3>
+      <p>Heads or tails?</p>
+      <button onclick="flipCoin()">Flip Coin</button>
+      <div id="coinResult" class="result">🪙</div>
+    </div>
+
+    <div class="card searchable">
+      <h3>🎯 Random Number</h3>
+      <p>Generate a random number.</p>
+      <button onclick="randomNumber()">Generate</button>
+      <div id="randomResult" class="result">?</div>
+    </div>
+
+  </div>
+</section>
+
+<section id="tools">
+  <h2>🛠️ Free Tools</h2>
+
+  <div class="grid">
+
+    <div class="card searchable">
+      <h3>🧮 Calculator</h3>
+      <p>Simple calculator.</p>
+      <button onclick="openTool('calculator')">Open</button>
+    </div>
+
+    <div class="card searchable">
+      <h3>📝 Word Counter</h3>
+      <p>Count words and characters.</p>
+      <button onclick="openTool('words')">Open</button>
+    </div>
+
+    <div class="card searchable">
+      <h3>🔐 Password Generator</h3>
+      <p>Create a random password.</p>
+      <button onclick="openTool('password')">Open</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- Calculator -->
+
+<div id="calculator" class="tool hidden">
+  <h2>🧮 Calculator</h2>
+
+  <input id="calcInput" placeholder="Example: 25*4+10">
+
+  <button onclick="calculate()">Calculate</button>
+
+  <div id="calcResult" class="result"></div>
+</div>
+
+<!-- Word Counter -->
+
+<div id="words" class="tool hidden">
+  <h2>📝 Word Counter</h2>
+
+  <textarea
+    id="wordText"
+    placeholder="Type or paste your text here..."
+    oninput="countWords()"
+  ></textarea>
+
+  <div id="wordResult" class="result">
+    Words: 0 | Characters: 0
+  </div>
+</div>
+
+<!-- Password -->
+
+<div id="password" class="tool hidden">
+  <h2>🔐 Password Generator</h2>
+
+  <input
+    id="passLength"
+    type="number"
+    value="12"
+    min="4"
+    max="50"
+  >
+
+  <button onclick="generatePassword()">Generate Password</button>
+
+  <div id="passResult" class="result"></div>
+</div>
+
+<footer>
+  © 2026 GameTool Hub | Free Gaming & Tools Website
+</footer>
+
+<script>
+
+function rollDice(){
+
+  let number = Math.floor(Math.random()*6)+1;
+
+  document.getElementById("diceResult").innerText =
+    "🎲 You rolled: " + number;
+}
+
+function flipCoin(){
+
+  let result = Math.random()<0.5 ? "Heads 🪙" : "Tails 🪙";
+
+  document.getElementById("coinResult").innerText = result;
+}
+
+function randomNumber(){
+
+  let number = Math.floor(Math.random()*100)+1;
+
+  document.getElementById("randomResult").innerText =
+    number;
+}
+
+function searchCards(){
+
+  let input =
+    document.getElementById("search").value.toLowerCase();
+
+  let cards =
+    document.querySelectorAll(".searchable");
+
+  cards.forEach(card => {
+
+    let text = card.innerText.toLowerCase();
+
+    if(text.includes(input)){
+      card.style.display = "";
+    }else{
+      card.style.display = "none";
+    }
+
+  });
+}
+
+function openTool(id){
+
+  document.querySelectorAll(".tool").forEach(tool=>{
+    tool.classList.add("hidden");
+  });
+
+  document.getElementById(id).classList.remove("hidden");
+
+  document.getElementById(id).scrollIntoView({
+    behavior:"smooth"
+  });
+}
+
+function calculate(){
+
+  let value =
+    document.getElementById("calcInput").value;
+
+  try{
+
+    let result = Function(
+      '"use strict";return (' + value + ')'
+    )();
+
+    document.getElementById("calcResult").innerText =
+      "Result: " + result;
+
+  }catch{
+
+    document.getElementById("calcResult").innerText =
+      "Invalid calculation.";
+
+  }
+}
+
+function countWords(){
+
+  let text =
+    document.getElementById("wordText").value.trim();
+
+  let words =
+    text === "" ? 0 : text.split(/\s+/).length;
+
+  let characters =
+    document.getElementById("wordText").value.length;
+
+  document.getElementById("wordResult").innerText =
+    "Words: " + words +
+    " | Characters: " + characters;
+}
+
+function generatePassword(){
+
+  let length =
+    Number(document.getElementById("passLength").value);
+
+  let chars =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
+
+  let password = "";
+
+  for(let i=0;i<length;i++){
+
+    password +=
+      chars.charAt(
+        Math.floor(Math.random()*chars.length)
+      );
+
+  }
+
+  document.getElementById("passResult").innerText =
+    password;
+}
+
+</script>
+
+</body>
+</html>
