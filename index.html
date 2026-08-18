@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>GameTool Hub - Free Games & Tools</title>
-<meta name="description" content="GameTool Hub - Free online games, useful tools, profiles and live chat.">
+<meta name="description" content="GameTool Hub - Free online games, tools, profiles and live chat.">
 
 <style>
 *{
@@ -21,7 +21,7 @@ html{
 body{
   font-family:Arial,sans-serif;
   background:#080d1c;
-  color:#fff;
+  color:white;
 }
 
 header{
@@ -40,20 +40,17 @@ header{
 .logo{
   font-size:23px;
   font-weight:bold;
-  white-space:nowrap;
 }
 
 nav{
   display:flex;
-  align-items:center;
   flex-wrap:wrap;
-  justify-content:flex-end;
+  gap:12px;
 }
 
 nav a{
-  color:#fff;
+  color:white;
   text-decoration:none;
-  margin-left:14px;
   font-weight:bold;
   font-size:14px;
 }
@@ -92,7 +89,6 @@ nav a:hover{
   border:0;
   border-radius:30px;
   font-size:16px;
-  outline:none;
 }
 
 section{
@@ -122,17 +118,12 @@ section{
   border-radius:18px;
 }
 
-.card{
-  transition:.25s;
-}
-
 .card:hover{
-  transform:translateY(-5px);
+  transform:translateY(-4px);
   border-color:#7568ed;
 }
 
 .card h3{
-  font-size:21px;
   margin-bottom:10px;
 }
 
@@ -144,41 +135,24 @@ section{
 
 button{
   background:#7064e8;
-  color:#fff;
+  color:white;
   border:0;
   padding:11px 18px;
   border-radius:9px;
   cursor:pointer;
   font-weight:bold;
-  font-size:14px;
 }
 
 button:hover{
   opacity:.85;
 }
 
-button.secondary{
-  background:#293352;
-}
-
 button.danger{
   background:#c94b62;
 }
 
-.result{
-  background:#090e1e;
-  border:1px solid #293352;
-  padding:14px;
-  border-radius:10px;
-  margin-top:15px;
-  min-height:45px;
-  word-break:break-word;
-}
-
-.big-result{
-  font-size:28px;
-  text-align:center;
-  padding:20px;
+button.secondary{
+  background:#293352;
 }
 
 input,
@@ -198,19 +172,35 @@ textarea{
   resize:vertical;
 }
 
-.game-buttons{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
+.result{
+  background:#090e1e;
+  border:1px solid #293352;
+  padding:14px;
+  border-radius:10px;
+  margin-top:15px;
+  min-height:45px;
+  word-break:break-word;
+}
+
+.big-result{
+  font-size:28px;
+  text-align:center;
+  padding:20px;
 }
 
 .hidden{
   display:none!important;
 }
 
-/* PROFILE */
+.game-buttons{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
 
-.profile-box{
+.profile-box,
+.chat-box,
+.message-box{
   max-width:800px;
   margin:auto;
 }
@@ -228,8 +218,8 @@ textarea{
   border-radius:50%;
   background:#7064e8;
   display:flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
   font-size:35px;
   font-weight:bold;
 }
@@ -243,14 +233,6 @@ textarea{
   color:#aeb7d1;
   margin-top:5px;
 }
-
-.profile-actions{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-}
-
-/* MEMORY */
 
 .memory-grid{
   display:grid;
@@ -275,13 +257,6 @@ textarea{
   background:#7064e8;
 }
 
-/* CHAT */
-
-.chat-box{
-  max-width:800px;
-  margin:auto;
-}
-
 .chat-status{
   text-align:center;
   color:#9da8c7;
@@ -303,19 +278,18 @@ textarea{
   padding:10px 13px;
   border-radius:10px;
   margin-bottom:10px;
-  word-break:break-word;
 }
 
 .chat-name{
-  font-weight:bold;
   color:#a99cff;
+  font-weight:bold;
   margin-bottom:4px;
 }
 
 .chat-time{
-  font-size:11px;
   color:#8d96b2;
-  margin-top:4px;
+  font-size:11px;
+  margin-top:5px;
 }
 
 .chat-input-row{
@@ -327,18 +301,9 @@ textarea{
   margin:0;
 }
 
-.message-box{
-  max-width:800px;
-  margin:25px auto;
-}
-
 .message-item{
   padding:15px;
   border-bottom:1px solid #293352;
-}
-
-.message-item:last-child{
-  border-bottom:0;
 }
 
 .info-page{
@@ -382,50 +347,35 @@ footer a{
 
 @media(max-width:700px){
 
-  header{
-    flex-direction:column;
-    align-items:flex-start;
-  }
+header{
+  flex-direction:column;
+  align-items:flex-start;
+}
 
-  nav{
-    justify-content:flex-start;
-  }
+nav{
+  gap:8px;
+}
 
-  nav a{
-    margin-left:0;
-    margin-right:10px;
-    margin-bottom:8px;
-    font-size:12px;
-  }
+.hero h1{
+  font-size:36px;
+}
 
-  .hero{
-    padding:60px 15px;
-  }
+section{
+  padding:45px 4%;
+}
 
-  .hero h1{
-    font-size:36px;
-  }
+.chat-input-row{
+  flex-direction:column;
+}
 
-  section{
-    padding:45px 4%;
-  }
+.profile-header{
+  flex-direction:column;
+  text-align:center;
+}
 
-  .section-title{
-    font-size:29px;
-  }
-
-  .chat-input-row{
-    flex-direction:column;
-  }
-
-  .profile-header{
-    flex-direction:column;
-    text-align:center;
-  }
-
-  .memory-card{
-    height:65px;
-  }
+.memory-card{
+  height:65px;
+}
 }
 </style>
 </head>
@@ -439,13 +389,13 @@ footer a{
 <nav>
 <a href="#games">Games</a>
 <a href="#tools">Tools</a>
+<a href="#auth">Account</a>
 <a href="#profile">Profile</a>
 <a href="#chat">Chat</a>
 <a href="#messages">Messages</a>
 <a href="#about">About</a>
 <a href="#contact">Contact</a>
 <a href="#privacy">Privacy</a>
-<a href="#auth" class="account-btn">Account</a>
 </nav>
 
 </header>
@@ -467,7 +417,7 @@ oninput="searchItems()"
 </section>
 
 
-<!-- ================= GAMES ================= -->
+<!-- GAMES -->
 
 <section id="games">
 
@@ -477,10 +427,11 @@ oninput="searchItems()"
 
 <div class="card searchable">
 <h3>🎲 Dice Roller</h3>
-<p>Roll a virtual dice and get a random number.</p>
+<p>Roll a virtual dice.</p>
 <button onclick="rollDice()">Roll Dice</button>
 <div id="diceResult" class="result big-result">🎲</div>
 </div>
+
 
 <div class="card searchable">
 <h3>🪙 Coin Flip</h3>
@@ -489,28 +440,29 @@ oninput="searchItems()"
 <div id="coinResult" class="result big-result">🪙</div>
 </div>
 
+
 <div class="card searchable">
+
 <h3>🔢 Guess the Number</h3>
+
 <p>Guess a number between 1 and 100.</p>
 
-<input
-id="guessInput"
-type="number"
-placeholder="Enter your guess"
->
+<input id="guessInput" type="number" placeholder="Your guess">
 
 <button onclick="guessNumber()">Guess</button>
 
 <div id="guessResult" class="result">
 Start guessing!
 </div>
+
 </div>
+
 
 <div class="card searchable">
 
 <h3>✊ Rock Paper Scissors</h3>
 
-<p>Play against the computer.</p>
+<p>Play against computer.</p>
 
 <div class="game-buttons">
 
@@ -548,7 +500,7 @@ Click Start Game.
 </section>
 
 
-<!-- ================= TOOLS ================= -->
+<!-- TOOLS -->
 
 <section id="tools">
 
@@ -558,7 +510,7 @@ Click Start Game.
 
 <div class="card searchable">
 <h3>🧮 Calculator</h3>
-<p>Calculate basic mathematical expressions.</p>
+<p>Calculate expressions.</p>
 <button onclick="showTool('calculator')">Open Calculator</button>
 </div>
 
@@ -591,16 +543,11 @@ Click Start Game.
 </section>
 
 
-<!-- CALCULATOR -->
-
 <div id="calculator" class="tool-box hidden">
 
 <h2>🧮 Calculator</h2>
 
-<input
-id="calcInput"
-placeholder="Example: 25*4+10"
->
+<input id="calcInput" placeholder="Example: 25*4+10">
 
 <button onclick="calculate()">Calculate</button>
 
@@ -609,8 +556,6 @@ placeholder="Example: 25*4+10"
 </div>
 
 
-<!-- WORD COUNTER -->
-
 <div id="wordTool" class="tool-box hidden">
 
 <h2>📝 Word Counter</h2>
@@ -618,8 +563,7 @@ placeholder="Example: 25*4+10"
 <textarea
 id="wordText"
 placeholder="Type or paste your text..."
-oninput="countWords()"
-></textarea>
+oninput="countWords()"></textarea>
 
 <div id="wordResult" class="result">
 Words: 0 | Characters: 0
@@ -628,30 +572,25 @@ Words: 0 | Characters: 0
 </div>
 
 
-<!-- PASSWORD -->
-
 <div id="passwordTool" class="tool-box hidden">
 
 <h2>🔐 Password Generator</h2>
-
-<label>Password length</label>
 
 <input
 id="passwordLength"
 type="number"
 min="4"
 max="50"
-value="14"
->
+value="14">
 
-<button onclick="generatePassword()">Generate Password</button>
+<button onclick="generatePassword()">
+Generate Password
+</button>
 
 <div id="passwordResult" class="result"></div>
 
 </div>
 
-
-<!-- CONVERTER -->
 
 <div id="converterTool" class="tool-box hidden">
 
@@ -660,8 +599,7 @@ value="14"
 <input
 id="convertValue"
 type="number"
-placeholder="Enter value"
->
+placeholder="Enter value">
 
 <select id="convertType">
 
@@ -680,8 +618,6 @@ placeholder="Enter value"
 
 </div>
 
-
-<!-- STOPWATCH -->
 
 <div id="stopwatchTool" class="tool-box hidden">
 
@@ -702,7 +638,7 @@ placeholder="Enter value"
 </div>
 
 
-<!-- ================= AUTH ================= -->
+<!-- AUTH -->
 
 <section id="auth">
 
@@ -715,40 +651,30 @@ Checking account...
 </div>
 
 
-<!-- LOGIN -->
-
 <div id="loginForm">
 
-<h3>Login</h3>
+<h3>Login / Create Account</h3>
 
 <input
 id="authEmail"
 type="email"
-placeholder="Email"
->
+placeholder="Email">
 
 <input
 id="authPassword"
 type="password"
-placeholder="Password"
->
+placeholder="Password">
 
 <div class="game-buttons">
 
-<button onclick="loginUser()">
-Login
-</button>
+<button onclick="loginUser()">Login</button>
 
-<button onclick="signupUser()">
-Create Account
-</button>
+<button onclick="signupUser()">Create Account</button>
 
 </div>
 
 </div>
 
-
-<!-- LOGGED IN -->
 
 <div id="loggedInBox" class="hidden">
 
@@ -761,7 +687,7 @@ Create Account
 </button>
 
 <button onclick="logoutUser()" class="danger">
-Logout
+🚪 Logout
 </button>
 
 </div>
@@ -773,7 +699,7 @@ Logout
 </section>
 
 
-<!-- ================= PROFILE ================= -->
+<!-- PROFILE -->
 
 <section id="profile">
 
@@ -790,14 +716,12 @@ Please login to view your profile.
 
 <div class="profile-header">
 
-<div id="avatar" class="avatar">
-U
-</div>
+<div id="avatar" class="avatar">U</div>
 
 <div>
 
 <div id="profileNameDisplay" class="profile-name">
-User
+GameTool User
 </div>
 
 <div id="profileEmailDisplay" class="profile-email">
@@ -808,16 +732,14 @@ email
 
 </div>
 
-
 <h3>Edit Profile</h3>
 
 <input
 id="profileNameInput"
 placeholder="Enter your profile name"
-maxlength="40"
->
+maxlength="40">
 
-<div class="profile-actions">
+<div class="game-buttons">
 
 <button onclick="saveProfile()">
 💾 Save Profile
@@ -829,8 +751,7 @@ maxlength="40"
 
 </div>
 
-<div id="profileResult" class="result">
-</div>
+<div id="profileResult" class="result"></div>
 
 </div>
 
@@ -839,7 +760,7 @@ maxlength="40"
 </section>
 
 
-<!-- ================= CHAT ================= -->
+<!-- CHAT -->
 
 <section id="chat">
 
@@ -851,8 +772,7 @@ maxlength="40"
 Login required for chat.
 </div>
 
-<div id="chatMessages" class="chat-messages">
-</div>
+<div id="chatMessages" class="chat-messages"></div>
 
 <div class="chat-input-row">
 
@@ -860,12 +780,9 @@ Login required for chat.
 id="chatInput"
 placeholder="Write a message..."
 maxlength="500"
-onkeydown="if(event.key==='Enter') sendMessage()"
->
+onkeydown="if(event.key==='Enter')sendMessage()">
 
-<button onclick="sendMessage()">
-Send
-</button>
+<button onclick="sendMessage()">Send</button>
 
 </div>
 
@@ -874,7 +791,7 @@ Send
 </section>
 
 
-<!-- ================= MESSAGES ================= -->
+<!-- MESSAGES -->
 
 <section id="messages">
 
@@ -886,8 +803,7 @@ Send
 Login required.
 </div>
 
-<div id="messageList">
-</div>
+<div id="messageList"></div>
 
 </div>
 
@@ -899,7 +815,7 @@ More games and tools will be added soon 🚀
 </p>
 
 
-<!-- ================= ABOUT ================= -->
+<!-- ABOUT -->
 
 <section id="about" class="info-page">
 
@@ -908,11 +824,6 @@ More games and tools will be added soon 🚀
 <p>
 Welcome to GameTool Hub! We provide free online games and useful
 tools that are simple, fast and easy to use.
-</p>
-
-<p>
-Our goal is to provide entertainment and useful online tools
-in one simple website.
 </p>
 
 <h3>🎮 Our Games</h3>
@@ -932,7 +843,7 @@ and Stopwatch.
 </section>
 
 
-<!-- ================= CONTACT ================= -->
+<!-- CONTACT -->
 
 <section id="contact" class="info-page">
 
@@ -946,7 +857,7 @@ you can contact the website owner.
 </section>
 
 
-<!-- ================= PRIVACY ================= -->
+<!-- PRIVACY -->
 
 <section id="privacy" class="info-page">
 
@@ -959,9 +870,9 @@ GameTool Hub respects your privacy.
 <h3>Information We Collect</h3>
 
 <p>
-Account information may be processed through Supabase Authentication.
-Chat messages and profile information may also be stored when those
-features are enabled.
+Account information is handled by Supabase Authentication.
+Profile names and chat messages may be stored when you use these
+features.
 </p>
 
 <h3>Cookies</h3>
@@ -996,8 +907,6 @@ This Privacy Policy may be updated when new features are added.
 </footer>
 
 
-<!-- ================= SUPABASE ================= -->
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
@@ -1018,49 +927,45 @@ SUPABASE_URL,
 SUPABASE_PUBLISHABLE_KEY
 );
 
+let currentUser=null;
+
 
 /* =====================================================
-   AUTH
+   LOGIN
 ===================================================== */
-
-let currentUser = null;
-
 
 async function loginUser(){
 
-const email =
-document.getElementById("authEmail")
+const email=document
+.getElementById("authEmail")
 .value.trim();
 
-const password =
-document.getElementById("authPassword")
+const password=document
+.getElementById("authPassword")
 .value;
 
 if(!email || !password){
 
 alert("Please enter email and password.");
-
 return;
+
 }
 
-const {data,error} =
-await supabaseClient.auth.signInWithPassword({
-
+const {data,error}=
+await supabaseClient.auth
+.signInWithPassword({
 email:email,
 password:password
-
 });
 
 if(error){
 
-console.error(error);
-
-alert("Login failed: " + error.message);
-
+alert("Login failed: "+error.message);
 return;
+
 }
 
-currentUser = data.user;
+currentUser=data.user;
 
 updateAllUI(currentUser);
 
@@ -1071,53 +976,51 @@ goToProfile();
 }
 
 
+/* =====================================================
+   SIGNUP
+===================================================== */
+
 async function signupUser(){
 
-const email =
-document.getElementById("authEmail")
+const email=document
+.getElementById("authEmail")
 .value.trim();
 
-const password =
-document.getElementById("authPassword")
+const password=document
+.getElementById("authPassword")
 .value;
 
 if(!email || !password){
 
 alert("Please enter email and password.");
-
 return;
+
 }
 
-if(password.length < 6){
+if(password.length<6){
 
 alert("Password must be at least 6 characters.");
-
 return;
+
 }
 
-const {data,error} =
-await supabaseClient.auth.signUp({
-
+const {data,error}=
+await supabaseClient.auth
+.signUp({
 email:email,
 password:password
-
 });
 
 if(error){
 
-console.error(error);
-
-alert(
-"Account creation failed: " +
-error.message
-);
-
+alert("Account creation failed: "+error.message);
 return;
+
 }
 
 if(data.user){
 
-currentUser = data.user;
+currentUser=data.user;
 
 updateAllUI(currentUser);
 
@@ -1130,19 +1033,23 @@ alert(
 }
 
 
+/* =====================================================
+   LOGOUT
+===================================================== */
+
 async function logoutUser(){
 
-const {error} =
+const {error}=
 await supabaseClient.auth.signOut();
 
 if(error){
 
-alert("Logout failed: " + error.message);
-
+alert("Logout failed: "+error.message);
 return;
+
 }
 
-currentUser = null;
+currentUser=null;
 
 updateAllUI(null);
 
@@ -1151,32 +1058,33 @@ alert("Logged out successfully.");
 }
 
 
+/* =====================================================
+   UPDATE UI
+===================================================== */
+
 function updateAllUI(user){
 
-currentUser = user;
+currentUser=user;
 
-const loginForm =
+const loginForm=
 document.getElementById("loginForm");
 
-const loggedInBox =
+const loggedInBox=
 document.getElementById("loggedInBox");
 
-const authStatus =
+const authStatus=
 document.getElementById("authStatus");
 
-const loggedInEmail =
-document.getElementById("loggedInEmail");
-
-const profileContent =
+const profileContent=
 document.getElementById("profileContent");
 
-const profileLoginMessage =
+const profileLoginMessage=
 document.getElementById("profileLoginMessage");
 
-const chatStatus =
+const chatStatus=
 document.getElementById("chatStatus");
 
-const messageStatus =
+const messageStatus=
 document.getElementById("messageStatus");
 
 if(user){
@@ -1185,26 +1093,26 @@ loginForm.classList.add("hidden");
 
 loggedInBox.classList.remove("hidden");
 
-loggedInEmail.innerText =
-"Logged in as: " +
-(user.email || "User");
+document.getElementById("loggedInEmail")
+.innerText=
+"Logged in as: "+(user.email||"User");
 
-authStatus.innerText =
-"🟢 Account connected";
+authStatus.innerText="🟢 Account connected";
 
 profileContent.classList.remove("hidden");
 
 profileLoginMessage.classList.add("hidden");
 
-chatStatus.innerText =
+chatStatus.innerText=
 "🟢 You are logged in. You can send messages.";
 
-messageStatus.innerText =
-"🟢 Logged in";
+messageStatus.innerText="🟢 Logged in";
 
 loadProfile();
 
 loadMessages();
+
+loadUserMessages();
 
 }else{
 
@@ -1212,18 +1120,20 @@ loginForm.classList.remove("hidden");
 
 loggedInBox.classList.add("hidden");
 
-authStatus.innerText =
+authStatus.innerText=
 "Please login or create an account.";
 
 profileContent.classList.add("hidden");
 
 profileLoginMessage.classList.remove("hidden");
 
-chatStatus.innerText =
+chatStatus.innerText=
 "🔴 Please login to use Live Chat.";
 
-messageStatus.innerText =
+messageStatus.innerText=
 "🔴 Please login to view messages.";
+
+document.getElementById("chatMessages").innerHTML="";
 
 document.getElementById("messageList").innerHTML="";
 
@@ -1232,27 +1142,27 @@ document.getElementById("messageList").innerHTML="";
 }
 
 
+/* =====================================================
+   CHECK AUTH
+===================================================== */
+
 async function checkAuth(){
 
-const {data} =
+const {data}=
 await supabaseClient.auth.getUser();
 
-updateAllUI(data.user || null);
+updateAllUI(data.user||null);
 
 }
-
 
 supabaseClient.auth.onAuthStateChange(
 (event,session)=>{
 
 updateAllUI(
-session
-? session.user
-: null
+session ? session.user : null
 );
 
-}
-);
+});
 
 checkAuth();
 
@@ -1263,44 +1173,41 @@ checkAuth();
 
 async function loadProfile(){
 
-if(!currentUser){
-return;
-}
+if(!currentUser)return;
 
-document.getElementById("profileEmailDisplay")
-.innerText =
-currentUser.email || "No email";
+const email=
+currentUser.email||"No email";
 
-let name =
-currentUser.user_metadata?.name || "";
+document.getElementById(
+"profileEmailDisplay"
+).innerText=email;
 
-document.getElementById("profileNameDisplay")
-.innerText =
-name || "GameTool User";
+const name=
+currentUser.user_metadata?.name||"";
 
-document.getElementById("profileNameInput")
-.value =
-name;
+document.getElementById(
+"profileNameDisplay"
+).innerText=
+name||"GameTool User";
 
-setAvatar(name || currentUser.email);
+document.getElementById(
+"profileNameInput"
+).value=name;
+
+setAvatar(name||email);
 
 }
 
 
 function setAvatar(name){
 
-const avatar =
+const avatar=
 document.getElementById("avatar");
 
-if(!name){
-
-avatar.innerText="U";
-
-return;
-}
-
-avatar.innerText =
-name.charAt(0).toUpperCase();
+avatar.innerText=
+name
+? name.charAt(0).toUpperCase()
+: "U";
 
 }
 
@@ -1310,22 +1217,23 @@ async function saveProfile(){
 if(!currentUser){
 
 alert("Please login first.");
-
 return;
+
 }
 
-const name =
-document.getElementById("profileNameInput")
-.value.trim();
+const name=
+document.getElementById(
+"profileNameInput"
+).value.trim();
 
 if(!name){
 
 alert("Please enter a profile name.");
-
 return;
+
 }
 
-const {data,error} =
+const {data,error}=
 await supabaseClient.auth.updateUser({
 
 data:{
@@ -1336,25 +1244,26 @@ name:name
 
 if(error){
 
-console.error(error);
-
-document.getElementById("profileResult")
-.innerText =
-"❌ Profile update failed: " +
-error.message;
+document.getElementById(
+"profileResult"
+).innerText=
+"❌ Profile update failed: "+error.message;
 
 return;
+
 }
 
-currentUser = data.user;
+currentUser=data.user;
 
-document.getElementById("profileNameDisplay")
-.innerText=name;
+document.getElementById(
+"profileNameDisplay"
+).innerText=name;
 
 setAvatar(name);
 
-document.getElementById("profileResult")
-.innerText =
+document.getElementById(
+"profileResult"
+).innerText=
 "✅ Profile updated successfully.";
 
 }
@@ -1362,9 +1271,9 @@ document.getElementById("profileResult")
 
 function goToProfile(){
 
-document
-.getElementById("profile")
-.scrollIntoView({
+document.getElementById(
+"profile"
+).scrollIntoView({
 behavior:"smooth"
 });
 
@@ -1372,20 +1281,19 @@ behavior:"smooth"
 
 
 /* =====================================================
-   CHAT
+   CHAT LOAD
 ===================================================== */
 
 async function loadMessages(){
 
-if(!currentUser){
+if(!currentUser)return;
 
-return;
-}
+const box=
+document.getElementById(
+"chatMessages"
+);
 
-const box =
-document.getElementById("chatMessages");
-
-const {data,error} =
+const {data,error}=
 await supabaseClient
 .from("messages")
 .select("*")
@@ -1394,13 +1302,15 @@ await supabaseClient
 
 if(error){
 
-console.error("Messages error:",error);
+console.error(error);
 
-document.getElementById("chatStatus")
-.innerText =
-"⚠️ Chat database is not configured yet.";
+document.getElementById(
+"chatStatus"
+).innerText=
+"⚠️ Chat database is not configured.";
 
 return;
+
 }
 
 box.innerHTML="";
@@ -1409,44 +1319,49 @@ data.forEach(message=>{
 displayMessage(message);
 });
 
-box.scrollTop =
-box.scrollHeight;
+box.scrollTop=box.scrollHeight;
 
 }
 
 
+/* =====================================================
+   DISPLAY CHAT MESSAGE
+===================================================== */
+
 function displayMessage(message){
 
-const box =
-document.getElementById("chatMessages");
+const box=
+document.getElementById(
+"chatMessages"
+);
 
-const div =
+const div=
 document.createElement("div");
 
 div.className="chat-message";
 
-const name =
+const name=
 document.createElement("div");
 
 name.className="chat-name";
 
-name.innerText =
-message.name || "User";
+name.innerText=
+message.name||"User";
 
-const text =
+const text=
 document.createElement("div");
 
-text.innerText =
-message.content || "";
+text.innerText=
+message.content||"";
 
-const time =
+const time=
 document.createElement("div");
 
 time.className="chat-time";
 
 if(message.created_at){
 
-time.innerText =
+time.innerText=
 new Date(
 message.created_at
 ).toLocaleString();
@@ -1454,15 +1369,19 @@ message.created_at
 }
 
 div.appendChild(name);
-
 div.appendChild(text);
-
 div.appendChild(time);
 
 box.appendChild(div);
 
+box.scrollTop=box.scrollHeight;
+
 }
 
+
+/* =====================================================
+   SEND MESSAGE
+===================================================== */
 
 async function sendMessage(){
 
@@ -1470,41 +1389,42 @@ if(!currentUser){
 
 alert("Please login first.");
 
-document
-.getElementById("auth")
-.scrollIntoView({
+document.getElementById(
+"auth"
+).scrollIntoView({
 behavior:"smooth"
 });
 
 return;
+
 }
 
-const input =
-document.getElementById("chatInput");
+const input=
+document.getElementById(
+"chatInput"
+);
 
-const content =
+const content=
 input.value.trim();
 
-if(!content){
+if(!content)return;
 
-return;
-}
-
-const name =
-currentUser.user_metadata?.name ||
-currentUser.email ||
+const name=
+currentUser.user_metadata?.name||
+currentUser.email||
 "User";
 
-const {error} =
+const {data,error}=
 await supabaseClient
 .from("messages")
 .insert([{
 
-user_id:currentUser.id,
 name:name,
 content:content
 
-}]);
+}])
+.select()
+.single();
 
 if(error){
 
@@ -1515,17 +1435,17 @@ alert(
 );
 
 return;
+
 }
 
 input.value="";
-
 input.focus();
 
 }
 
 
 /* =====================================================
-   REALTIME CHAT
+   REALTIME
 ===================================================== */
 
 supabaseClient
@@ -1539,10 +1459,15 @@ table:"messages"
 },
 payload=>{
 
+if(currentUser){
+
 displayMessage(payload.new);
 
+loadUserMessages();
+
 }
-)
+
+})
 .subscribe();
 
 
@@ -1552,15 +1477,14 @@ displayMessage(payload.new);
 
 async function loadUserMessages(){
 
-if(!currentUser){
+if(!currentUser)return;
 
-return;
-}
+const list=
+document.getElementById(
+"messageList"
+);
 
-const list =
-document.getElementById("messageList");
-
-const {data,error} =
+const {data,error}=
 await supabaseClient
 .from("messages")
 .select("*")
@@ -1569,42 +1493,58 @@ await supabaseClient
 
 if(error){
 
-list.innerHTML =
+list.innerHTML=
 "<p>Messages database is not configured.</p>";
 
 return;
+
 }
 
 list.innerHTML="";
 
-if(!data || data.length===0){
+if(!data.length){
 
-list.innerHTML =
+list.innerHTML=
 "<p class='chat-status'>No messages yet.</p>";
 
 return;
+
 }
 
 data.forEach(message=>{
 
-const item =
+const item=
 document.createElement("div");
 
 item.className="message-item";
 
-item.innerHTML =
-"<strong>"+escapeHTML(
-message.name || "User"
-)+"</strong><br>"+
-escapeHTML(
-message.content || ""
-)+"<br>"+
-"<small>"+
-(message.created_at
-? new Date(message.created_at)
-.toLocaleString()
-:"")
-+"</small>";
+const strong=
+document.createElement("strong");
+
+strong.innerText=
+message.name||"User";
+
+const content=
+document.createElement("div");
+
+content.innerText=
+message.content||"";
+
+const small=
+document.createElement("small");
+
+small.innerText=
+message.created_at
+? new Date(
+message.created_at
+).toLocaleString()
+:"";
+
+item.appendChild(strong);
+item.appendChild(document.createElement("br"));
+item.appendChild(content);
+item.appendChild(document.createElement("br"));
+item.appendChild(small);
 
 list.appendChild(item);
 
@@ -1613,55 +1553,27 @@ list.appendChild(item);
 }
 
 
-function escapeHTML(text){
-
-const div =
-document.createElement("div");
-
-div.innerText=text;
-
-return div.innerHTML;
-
-}
-
-
-document
-.getElementById("messages")
-.addEventListener(
-"mouseenter",
-()=>{
-
-if(currentUser){
-
-loadUserMessages();
-
-}
-
-}
-);
-
-
 /* =====================================================
    SEARCH
 ===================================================== */
 
 function searchItems(){
 
-const query =
-document.getElementById("search")
-.value
-.toLowerCase();
+const query=
+document.getElementById(
+"search"
+).value.toLowerCase();
 
 document
 .querySelectorAll(".searchable")
 .forEach(card=>{
 
-card.style.display =
+card.style.display=
 card.innerText
 .toLowerCase()
 .includes(query)
-? ""
-: "none";
+?""
+:"none";
 
 });
 
@@ -1674,12 +1586,14 @@ card.innerText
 
 function rollDice(){
 
-const number =
-Math.floor(Math.random()*6)+1;
+const number=
+Math.floor(
+Math.random()*6
+)+1;
 
-document
-.getElementById("diceResult")
-.innerText =
+document.getElementById(
+"diceResult"
+).innerText=
 "🎲 "+number;
 
 }
@@ -1691,14 +1605,14 @@ document
 
 function flipCoin(){
 
-const result =
+const result=
 Math.random()<0.5
-? "Heads 🪙"
-: "Tails 🪙";
+?"Heads 🪙"
+:"Tails 🪙";
 
-document
-.getElementById("coinResult")
-.innerText=result;
+document.getElementById(
+"coinResult"
+).innerText=result;
 
 }
 
@@ -1707,23 +1621,28 @@ document
    GUESS
 ===================================================== */
 
-let secretNumber =
-Math.floor(Math.random()*100)+1;
-
+let secretNumber=
+Math.floor(
+Math.random()*100
+)+1;
 
 function guessNumber(){
 
-const guess =
+const guess=
 Number(
-document.getElementById("guessInput").value
+document.getElementById(
+"guessInput"
+).value
 );
 
-const result =
-document.getElementById("guessResult");
+const result=
+document.getElementById(
+"guessResult"
+);
 
 if(!guess){
 
-result.innerText =
+result.innerText=
 "Please enter a number.";
 
 return;
@@ -1732,23 +1651,23 @@ return;
 
 if(guess===secretNumber){
 
-result.innerText =
+result.innerText=
 "🎉 Correct! New number generated.";
 
-secretNumber =
-Math.floor(Math.random()*100)+1;
+secretNumber=
+Math.floor(
+Math.random()*100
+)+1;
 
 }
 else if(guess<secretNumber){
 
-result.innerText =
-"⬆️ Too low!";
+result.innerText="⬆️ Too low!";
 
 }
 else{
 
-result.innerText =
-"⬇️ Too high!";
+result.innerText="⬇️ Too high!";
 
 }
 
@@ -1761,12 +1680,17 @@ result.innerText =
 
 function rps(player){
 
-const choices =
-["Rock","Paper","Scissors"];
+const choices=[
+"Rock",
+"Paper",
+"Scissors"
+];
 
-const computer =
+const computer=
 choices[
-Math.floor(Math.random()*3)
+Math.floor(
+Math.random()*3
+)
 ];
 
 let result;
@@ -1778,14 +1702,9 @@ result="🤝 Draw!";
 }
 else if(
 
-(player==="Rock" &&
-computer==="Scissors") ||
-
-(player==="Paper" &&
-computer==="Rock") ||
-
-(player==="Scissors" &&
-computer==="Paper")
+(player==="Rock"&&computer==="Scissors")||
+(player==="Paper"&&computer==="Rock")||
+(player==="Scissors"&&computer==="Paper")
 
 ){
 
@@ -1798,12 +1717,12 @@ result="😅 Computer Wins!";
 
 }
 
-document
-.getElementById("rpsResult")
-.innerText =
+document.getElementById(
+"rpsResult"
+).innerText=
 "You: "+player+
 " | Computer: "+computer+
-" " + result;
+" | "+result;
 
 }
 
@@ -1824,11 +1743,12 @@ const memoryEmojis=[
 "⭐","⭐"
 ];
 
-
 function startMemory(){
 
-const grid =
-document.getElementById("memoryGrid");
+const grid=
+document.getElementById(
+"memoryGrid"
+);
 
 grid.innerHTML="";
 
@@ -1841,7 +1761,7 @@ memoryMatches=0;
 .sort(()=>Math.random()-0.5)
 .forEach(emoji=>{
 
-const card =
+const card=
 document.createElement("div");
 
 card.className="memory-card";
@@ -1858,9 +1778,9 @@ grid.appendChild(card);
 
 });
 
-document
-.getElementById("memoryResult")
-.innerText =
+document.getElementById(
+"memoryResult"
+).innerText=
 "Find all matching pairs!";
 
 }
@@ -1869,24 +1789,19 @@ document
 function memoryClick(card){
 
 if(
-memoryLock ||
-card===memoryFirst ||
+memoryLock||
+card===memoryFirst||
 card.classList.contains("open")
-){
-
-return;
-
-}
+)return;
 
 card.classList.add("open");
 
-card.innerText =
+card.innerText=
 card.dataset.emoji;
 
 if(!memoryFirst){
 
 memoryFirst=card;
-
 return;
 
 }
@@ -1908,9 +1823,9 @@ memoryLock=false;
 
 if(memoryMatches===4){
 
-document
-.getElementById("memoryResult")
-.innerText =
+document.getElementById(
+"memoryResult"
+).innerText=
 "🎉 You found all pairs!";
 
 }
@@ -1949,7 +1864,7 @@ document
 box.classList.add("hidden");
 });
 
-const tool =
+const tool=
 document.getElementById(id);
 
 tool.classList.remove("hidden");
@@ -1965,16 +1880,19 @@ behavior:"smooth"
 
 function calculate(){
 
-const input =
-document.getElementById("calcInput")
-.value.trim();
+const input=
+document.getElementById(
+"calcInput"
+).value.trim();
 
-const output =
-document.getElementById("calcResult");
+const output=
+document.getElementById(
+"calcResult"
+);
 
 if(!input){
 
-output.innerText =
+output.innerText=
 "Enter a calculation.";
 
 return;
@@ -1983,7 +1901,7 @@ return;
 
 if(!/^[0-9+\-*/().%\s]+$/.test(input)){
 
-output.innerText =
+output.innerText=
 "Invalid calculation.";
 
 return;
@@ -1992,20 +1910,20 @@ return;
 
 try{
 
-const result =
+const result=
 Function(
 '"use strict";return ('+
 input+
 ')'
 )();
 
-output.innerText =
+output.innerText=
 "Result: "+result;
 
 }
 catch{
 
-output.innerText =
+output.innerText=
 "Invalid calculation.";
 
 }
@@ -2017,18 +1935,19 @@ output.innerText =
 
 function countWords(){
 
-const text =
-document.getElementById("wordText")
-.value;
+const text=
+document.getElementById(
+"wordText"
+).value;
 
-const words =
+const words=
 text.trim()===""
 ?0
 :text.trim().split(/\s+/).length;
 
-document
-.getElementById("wordResult")
-.innerText =
+document.getElementById(
+"wordResult"
+).innerText=
 "Words: "+words+
 " | Characters: "+text.length;
 
@@ -2039,25 +1958,24 @@ document
 
 function generatePassword(){
 
-let length =
+let length=
 Number(
-document
-.getElementById("passwordLength")
-.value
+document.getElementById(
+"passwordLength"
+).value
 );
 
-if(length<4) length=4;
+if(length<4)length=4;
+if(length>50)length=50;
 
-if(length>50) length=50;
-
-const chars =
+const chars=
 "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
 
 let password="";
 
 for(let i=0;i<length;i++){
 
-password +=
+password+=
 chars[
 Math.floor(
 Math.random()*chars.length
@@ -2066,9 +1984,9 @@ Math.random()*chars.length
 
 }
 
-document
-.getElementById("passwordResult")
-.innerText=password;
+document.getElementById(
+"passwordResult"
+).innerText=password;
 
 }
 
@@ -2077,28 +1995,30 @@ document
 
 function convertUnit(){
 
-const value =
+const value=
 Number(
-document.getElementById("convertValue")
-.value
+document.getElementById(
+"convertValue"
+).value
 );
 
-const type =
-document.getElementById("convertType")
-.value;
+const type=
+document.getElementById(
+"convertType"
+).value;
 
 if(isNaN(value)){
 
-document
-.getElementById("convertResult")
-.innerText =
+document.getElementById(
+"convertResult"
+).innerText=
 "Enter a valid number.";
 
 return;
 
 }
 
-let result;
+let result="";
 
 switch(type){
 
@@ -2128,9 +2048,9 @@ break;
 
 }
 
-document
-.getElementById("convertResult")
-.innerText=result;
+document.getElementById(
+"convertResult"
+).innerText=result;
 
 }
 
@@ -2140,39 +2060,35 @@ document
 let stopwatchSeconds=0;
 let stopwatchTimer=null;
 
-
 function updateStopwatch(){
 
-const hours =
-Math.floor(stopwatchSeconds/3600);
+const hours=
+Math.floor(
+stopwatchSeconds/3600
+);
 
-const minutes =
+const minutes=
 Math.floor(
 (stopwatchSeconds%3600)/60
 );
 
-const seconds =
+const seconds=
 stopwatchSeconds%60;
 
-document
-.getElementById("stopwatchDisplay")
-.innerText =
+document.getElementById(
+"stopwatchDisplay"
+).innerText=
 String(hours).padStart(2,"0")+":"+
 String(minutes).padStart(2,"0")+":"+
 String(seconds).padStart(2,"0");
 
 }
 
-
 function startStopwatch(){
 
-if(stopwatchTimer!==null){
+if(stopwatchTimer!==null)return;
 
-return;
-
-}
-
-stopwatchTimer =
+stopwatchTimer=
 setInterval(()=>{
 
 stopwatchSeconds++;
@@ -2183,7 +2099,6 @@ updateStopwatch();
 
 }
 
-
 function pauseStopwatch(){
 
 clearInterval(stopwatchTimer);
@@ -2191,7 +2106,6 @@ clearInterval(stopwatchTimer);
 stopwatchTimer=null;
 
 }
-
 
 function resetStopwatch(){
 
