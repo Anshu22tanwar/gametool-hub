@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>GameTool Hub - Free Games & Tools</title>
-<meta name="description" content="Play free online games and use useful free tools on GameTool Hub.">
+<meta name="description" content="Free online games, useful tools and real-time visitor chat.">
 
 <style>
 *{
@@ -44,7 +44,7 @@ header{
 nav a{
   color:#fff;
   text-decoration:none;
-  margin-left:18px;
+  margin-left:16px;
   font-weight:bold;
 }
 
@@ -317,8 +317,8 @@ footer a{
   }
 
   nav a{
-    margin-left:7px;
-    font-size:12px;
+    margin-left:6px;
+    font-size:11px;
   }
 
   .hero{
@@ -369,9 +369,7 @@ footer a{
 
 <h1>Gaming + Free Tools</h1>
 
-<p>
-Play games and use useful online tools — completely free.
-</p>
+<p>Play games and use useful online tools — completely free.</p>
 
 <input
 class="search"
@@ -500,7 +498,7 @@ Click Start Game.
 </div>
 
 
-<!-- WORD -->
+<!-- WORD COUNTER -->
 
 <div id="wordTool" class="tool-box hidden">
 
@@ -535,9 +533,7 @@ max="50"
 value="14"
 >
 
-<button onclick="generatePassword()">
-Generate Password
-</button>
+<button onclick="generatePassword()">Generate Password</button>
 
 <div id="passwordResult" class="result"></div>
 
@@ -557,14 +553,12 @@ placeholder="Enter value"
 >
 
 <select id="convertType">
-
 <option value="km-m">Kilometers → Meters</option>
 <option value="m-km">Meters → Kilometers</option>
 <option value="kg-g">Kilograms → Grams</option>
 <option value="g-kg">Grams → Kilograms</option>
 <option value="cm-m">Centimeters → Meters</option>
 <option value="m-cm">Meters → Centimeters</option>
-
 </select>
 
 <button onclick="convertUnit()">Convert</button>
@@ -585,11 +579,9 @@ placeholder="Enter value"
 </div>
 
 <div class="game-buttons">
-
 <button onclick="startStopwatch()">▶ Start</button>
 <button onclick="pauseStopwatch()">⏸ Pause</button>
 <button onclick="resetStopwatch()">🔄 Reset</button>
-
 </div>
 
 </div>
@@ -599,7 +591,7 @@ placeholder="Enter value"
 
 <section id="chat">
 
-<h2 class="section-title">💬 Live Chat</h2>
+<h2 class="section-title">💬 Live Visitor Chat</h2>
 
 <div class="chat-box">
 
@@ -625,9 +617,7 @@ maxlength="500"
 onkeydown="if(event.key==='Enter') sendMessage()"
 >
 
-<button onclick="sendMessage()">
-Send
-</button>
+<button onclick="sendMessage()">Send</button>
 
 </div>
 
@@ -681,7 +671,7 @@ and Stopwatch.
 <h2>📩 Contact Us</h2>
 
 <p>
-If you have any questions, suggestions or feedback about GameTool Hub,
+If you have questions, suggestions or feedback about GameTool Hub,
 you can contact the website owner.
 </p>
 
@@ -701,16 +691,16 @@ GameTool Hub respects your privacy.
 <h3>Information We Collect</h3>
 
 <p>
-The basic games and tools do not require personal information.
-Live Chat messages are stored in the chat database so they can
-be displayed to other visitors.
+The games and tools do not require personal information.
+For the Live Chat, your chosen name and message are stored in
+the chat database so that messages can be displayed to visitors.
 </p>
 
 <h3>Cookies</h3>
 
 <p>
 The basic website does not require cookies for its main functionality.
-Third-party services may have their own policies.
+Third-party services may have their own privacy policies.
 </p>
 
 <h3>Changes</h3>
@@ -737,22 +727,18 @@ This Privacy Policy may be updated when new features are added.
 </footer>
 
 
-<!-- SUPABASE LIBRARY -->
+<!-- SUPABASE -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
 /* =====================================================
-   SUPABASE SETTINGS
+   SUPABASE
    ===================================================== */
 
 const SUPABASE_URL =
 "https://saecqxnquexfwsibiffa.supabase.co";
-
-/*
-PASTE YOUR SUPABASE PUBLISHABLE KEY BETWEEN THE QUOTES
-*/
 
 const SUPABASE_PUBLISHABLE_KEY =
 "sb_publishable_wchETn4uwd1opgo-PwAKUA_U33UKgTu";
@@ -765,7 +751,7 @@ supabase.createClient(
 
 
 /* =====================================================
-   CHAT
+   LIVE CHAT
    ===================================================== */
 
 let chatChannel = null;
@@ -778,19 +764,19 @@ async function loadMessages(){
   const box =
     document.getElementById("chatMessages");
 
-  const { data, error } =
+  const {data,error} =
     await supabaseClient
-      .from("messages")
-      .select("*")
-      .order("created_at",{ascending:true})
-      .limit(100);
+    .from("messages")
+    .select("*")
+    .order("created_at",{ascending:true})
+    .limit(100);
 
   if(error){
 
-    console.error(error);
+    console.error("Load messages error:",error);
 
     status.innerText =
-      "❌ Chat connection error.";
+      "❌ Chat connection error";
 
     return;
   }
@@ -798,14 +784,13 @@ async function loadMessages(){
   status.innerText =
     "🟢 Live Chat Connected";
 
-  box.innerHTML = "";
+  box.innerHTML="";
 
   data.forEach(message=>{
     displayMessage(message);
   });
 
-  box.scrollTop =
-    box.scrollHeight;
+  box.scrollTop=box.scrollHeight;
 }
 
 
@@ -817,14 +802,12 @@ function displayMessage(message){
   const div =
     document.createElement("div");
 
-  div.className =
-    "chat-message";
+  div.className="chat-message";
 
   const name =
     document.createElement("div");
 
-  name.className =
-    "chat-name";
+  name.className="chat-name";
 
   name.innerText =
     message.name || "Visitor";
@@ -838,8 +821,7 @@ function displayMessage(message){
   const time =
     document.createElement("div");
 
-  time.className =
-    "chat-time";
+  time.className="chat-time";
 
   if(message.created_at){
 
@@ -855,8 +837,7 @@ function displayMessage(message){
 
   box.appendChild(div);
 
-  box.scrollTop =
-    box.scrollHeight;
+  box.scrollTop=box.scrollHeight;
 }
 
 
@@ -888,54 +869,57 @@ async function sendMessage(){
     return;
   }
 
-  const { error } =
+  const {error} =
     await supabaseClient
-      .from("messages")
-      .insert([
-        {
-          name:name,
-          content:content
-        }
-      ]);
+    .from("messages")
+    .insert([
+      {
+        name:name,
+        content:content
+      }
+    ]);
 
   if(error){
 
-    console.error(error);
+    console.error("Send message error:",error);
 
     alert(
-      "Message send nahi hua. Supabase settings check karo."
+      "Message send nahi hua. Supabase RLS policies check karo."
     );
 
     return;
   }
 
-  messageInput.value = "";
+  messageInput.value="";
   messageInput.focus();
 }
 
+
+/* REAL-TIME */
 
 function subscribeToChat(){
 
   chatChannel =
     supabaseClient
-      .channel("messages-realtime")
-      .on(
-        "postgres_changes",
-        {
-          event:"INSERT",
-          schema:"public",
-          table:"messages"
-        },
-        payload=>{
+    .channel("public-messages")
+    .on(
+      "postgres_changes",
+      {
+        event:"INSERT",
+        schema:"public",
+        table:"messages"
+      },
+      payload=>{
 
-          displayMessage(
-            payload.new
-          );
+        displayMessage(payload.new);
 
-        }
-      )
-      .subscribe();
+      }
+    )
+    .subscribe(status=>{
 
+      console.log("Realtime status:",status);
+
+    });
 }
 
 
@@ -951,22 +935,20 @@ function searchItems(){
 
   const query =
     document.getElementById("search")
-    .value
-    .toLowerCase();
+    .value.toLowerCase();
 
   document
-    .querySelectorAll(".searchable")
-    .forEach(card=>{
+  .querySelectorAll(".searchable")
+  .forEach(card=>{
 
-      card.style.display =
-        card.innerText
-        .toLowerCase()
-        .includes(query)
-        ? ""
-        : "none";
+    card.style.display =
+      card.innerText
+      .toLowerCase()
+      .includes(query)
+      ? ""
+      : "none";
 
-    });
-
+  });
 }
 
 
@@ -980,8 +962,7 @@ function rollDice(){
     Math.floor(Math.random()*6)+1;
 
   document.getElementById("diceResult")
-    .innerText =
-    "🎲 " + number;
+  .innerText="🎲 "+number;
 }
 
 
@@ -997,13 +978,12 @@ function flipCoin(){
     : "Tails 🪙";
 
   document.getElementById("coinResult")
-    .innerText =
-    result;
+  .innerText=result;
 }
 
 
 /* =====================================================
-   GUESS
+   GUESS NUMBER
    ===================================================== */
 
 let secretNumber =
@@ -1021,8 +1001,7 @@ function guessNumber(){
 
   if(!guess){
 
-    result.innerText =
-      "Please enter a number.";
+    result.innerText="Please enter a number.";
 
     return;
   }
@@ -1035,22 +1014,22 @@ function guessNumber(){
     secretNumber =
       Math.floor(Math.random()*100)+1;
 
-  }else if(guess<secretNumber){
+  }
+  else if(guess<secretNumber){
 
-    result.innerText =
-      "⬆️ Too low!";
+    result.innerText="⬆️ Too low!";
 
-  }else{
+  }
+  else{
 
-    result.innerText =
-      "⬇️ Too high!";
+    result.innerText="⬇️ Too high!";
 
   }
 }
 
 
 /* =====================================================
-   RPS
+   ROCK PAPER SCISSORS
    ===================================================== */
 
 function rps(player){
@@ -1069,7 +1048,8 @@ function rps(player){
 
     result="🤝 Draw!";
 
-  }else if(
+  }
+  else if(
     (player==="Rock" && computer==="Scissors") ||
     (player==="Paper" && computer==="Rock") ||
     (player==="Scissors" && computer==="Paper")
@@ -1077,14 +1057,15 @@ function rps(player){
 
     result="🎉 You Win!";
 
-  }else{
+  }
+  else{
 
     result="😅 Computer Wins!";
 
   }
 
   document.getElementById("rpsResult")
-    .innerText =
+  .innerText =
     "You: "+player+
     " | Computer: "+computer+
     " → "+result;
@@ -1092,7 +1073,7 @@ function rps(player){
 
 
 /* =====================================================
-   MEMORY
+   MEMORY GAME
    ===================================================== */
 
 let memoryFirst=null;
@@ -1120,31 +1101,28 @@ function startMemory(){
   memoryMatches=0;
 
   [...memoryEmojis]
-    .sort(()=>Math.random()-0.5)
-    .forEach(emoji=>{
+  .sort(()=>Math.random()-0.5)
+  .forEach(emoji=>{
 
-      const card =
-        document.createElement("div");
+    const card =
+      document.createElement("div");
 
-      card.className =
-        "memory-card";
+    card.className="memory-card";
 
-      card.innerText="?";
+    card.innerText="?";
 
-      card.dataset.emoji =
-        emoji;
+    card.dataset.emoji=emoji;
 
-      card.onclick=()=>{
-        memoryClick(card);
-      };
+    card.onclick=()=>{
+      memoryClick(card);
+    };
 
-      grid.appendChild(card);
+    grid.appendChild(card);
 
-    });
+  });
 
   document.getElementById("memoryResult")
-    .innerText =
-    "Find all matching pairs!";
+  .innerText="Find all matching pairs!";
 }
 
 
@@ -1160,6 +1138,7 @@ function memoryClick(card){
   }
 
   card.classList.add("open");
+
   card.innerText =
     card.dataset.emoji;
 
@@ -1187,12 +1166,12 @@ function memoryClick(card){
     if(memoryMatches===4){
 
       document.getElementById("memoryResult")
-        .innerText =
-        "🎉 You found all pairs!";
+      .innerText="🎉 You found all pairs!";
 
     }
 
-  }else{
+  }
+  else{
 
     setTimeout(()=>{
 
@@ -1219,10 +1198,10 @@ function memoryClick(card){
 function showTool(id){
 
   document
-    .querySelectorAll(".tool-box")
-    .forEach(box=>{
-      box.classList.add("hidden");
-    });
+  .querySelectorAll(".tool-box")
+  .forEach(box=>{
+    box.classList.add("hidden");
+  });
 
   const tool =
     document.getElementById(id);
@@ -1235,6 +1214,8 @@ function showTool(id){
 }
 
 
+/* CALCULATOR */
+
 function calculate(){
 
   const input =
@@ -1246,16 +1227,14 @@ function calculate(){
 
   if(!input){
 
-    output.innerText =
-      "Enter a calculation.";
+    output.innerText="Enter a calculation.";
 
     return;
   }
 
   if(!/^[0-9+\-*/().%\s]+$/.test(input)){
 
-    output.innerText =
-      "Invalid calculation.";
+    output.innerText="Invalid calculation.";
 
     return;
   }
@@ -1264,22 +1243,25 @@ function calculate(){
 
     const result =
       Function(
-        '"use strict"; return ('+
+        '"use strict";return ('+
         input+
         ')'
       )();
 
-    output.innerText =
+    output.innerText=
       "Result: "+result;
 
-  }catch{
+  }
+  catch{
 
-    output.innerText =
+    output.innerText=
       "Invalid calculation.";
 
   }
 }
 
+
+/* WORD COUNTER */
 
 function countWords(){
 
@@ -1292,11 +1274,13 @@ function countWords(){
     : text.trim().split(/\s+/).length;
 
   document.getElementById("wordResult")
-    .innerText =
+  .innerText =
     "Words: "+words+
     " | Characters: "+text.length;
 }
 
+
+/* PASSWORD */
 
 function generatePassword(){
 
@@ -1325,10 +1309,11 @@ function generatePassword(){
   }
 
   document.getElementById("passwordResult")
-    .innerText =
-    password;
+  .innerText=password;
 }
 
+
+/* CONVERTER */
 
 function convertUnit(){
 
@@ -1343,8 +1328,7 @@ function convertUnit(){
   if(isNaN(value)){
 
     document.getElementById("convertResult")
-      .innerText =
-      "Enter a valid number.";
+    .innerText="Enter a valid number.";
 
     return;
   }
@@ -1380,14 +1364,11 @@ function convertUnit(){
   }
 
   document.getElementById("convertResult")
-    .innerText =
-    result;
+  .innerText=result;
 }
 
 
-/* =====================================================
-   STOPWATCH
-   ===================================================== */
+/* STOPWATCH */
 
 let stopwatchSeconds=0;
 let stopwatchTimer=null;
@@ -1406,7 +1387,7 @@ function updateStopwatch(){
     stopwatchSeconds%60;
 
   document.getElementById("stopwatchDisplay")
-    .innerText =
+  .innerText =
     String(hours).padStart(2,"0")+":"+
     String(minutes).padStart(2,"0")+":"+
     String(seconds).padStart(2,"0");
