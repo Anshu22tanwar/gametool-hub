@@ -358,6 +358,7 @@ footer a{
 <a href="#games">Games</a>
 <a href="#tools">Tools</a>
 <a href="#chat">Chat</a>
+<a href="#auth">Account</a>
 <a href="#about">About</a>
 <a href="#contact">Contact</a>
 <a href="#privacy">Privacy</a>
@@ -587,6 +588,30 @@ placeholder="Enter value"
 </div>
 
 
+
+<!-- AUTHENTICATION -->
+<section id="auth">
+<h2 class="section-title">🔐 Login / Account</h2>
+<div class="chat-box">
+<div id="authStatus" class="chat-status">Checking account...</div>
+
+<div id="loginForm">
+<input id="authEmail" type="email" placeholder="Email">
+<input id="authPassword" type="password" placeholder="Password">
+
+<div class="game-buttons">
+<button onclick="loginUser()">Login</button>
+<button onclick="signupUser()">Create Account</button>
+</div>
+</div>
+
+<div id="loggedInBox" class="hidden">
+<div id="loggedInEmail" class="result"></div>
+<button onclick="logoutUser()">Logout</button>
+</div>
+</div>
+</section>
+
 <!-- LIVE CHAT -->
 
 <section id="chat">
@@ -604,8 +629,9 @@ Connecting to live chat...
 
 <input
 id="chatName"
-placeholder="Your name"
+placeholder="Login required — account email will be used"
 maxlength="30"
+disabled
 >
 
 <div class="chat-input-row">
@@ -750,6 +776,155 @@ supabase.createClient(
 );
 
 
+
+/* =====================================================
+   AUTHENTICATION
+   ===================================================== */
+
+async function loginUser(){
+
+  const email =
+    document.getElementById("authEmail").value.trim();
+
+  const password =
+    document.getElementById("authPassword").value;
+
+  if(!email || !password){
+    alert("Please enter email and password.");
+    return;
+  }
+
+  const {data,error} =
+    await supabaseClient.auth.signInWithPassword({
+      email:email,
+      password:password
+    });
+
+  if(error){
+    console.error("Login error:",error);
+    alert("Login failed: " + error.message);
+    return;
+  }
+
+  updateAuthUI(data.user);
+  alert("Login successful!");
+}
+
+
+async function signupUser(){
+
+  const email =
+    document.getElementById("authEmail").value.trim();
+
+  const password =
+    document.getElementById("authPassword").value;
+
+  if(!email || !password){
+    alert("Please enter email and password.");
+    return;
+  }
+
+  if(password.length < 6){
+    alert("Password must be at least 6 characters.");
+    return;
+  }
+
+  const {data,error} =
+    await supabaseClient.auth.signUp({
+      email:email,
+      password:password
+    });
+
+  if(error){
+    console.error("Signup error:",error);
+    alert("Account creation failed: " + error.message);
+    return;
+  }
+
+  if(data.user){
+    updateAuthUI(data.user);
+  }
+
+  alert("Account created. Check your email if confirmation is enabled.");
+}
+
+
+async function logoutUser(){
+
+  const {error} =
+    await supabaseClient.auth.signOut();
+
+  if(error){
+    console.error("Logout error:",error);
+    alert("Logout failed: " + error.message);
+    return;
+  }
+
+  updateAuthUI(null);
+}
+
+
+function updateAuthUI(user){
+
+  const loginForm =
+    document.getElementById("loginForm");
+
+  const loggedInBox =
+    document.getElementById("loggedInBox");
+
+  const status =
+    document.getElementById("authStatus");
+
+  const emailBox =
+    document.getElementById("loggedInEmail");
+
+  if(user){
+
+    loginForm.classList.add("hidden");
+    loggedInBox.classList.remove("hidden");
+
+    emailBox.innerText =
+      "Logged in as: " + (user.email || "User");
+
+    status.innerText =
+      "🟢 Account connected";
+
+  }else{
+
+    loginForm.classList.remove("hidden");
+    loggedInBox.classList.add("hidden");
+
+    status.innerText =
+      "Please login to use Live Chat.";
+
+  }
+}
+
+
+async function checkAuth(){
+
+  const {data,error} =
+    await supabaseClient.auth.getUser();
+
+  if(error){
+    console.error("Auth check error:",error);
+    updateAuthUI(null);
+    return;
+  }
+
+  updateAuthUI(data.user);
+}
+
+
+supabaseClient.auth.onAuthStateChange(
+  (_event,session)=>{
+    updateAuthUI(session ? session.user : null);
+  }
+);
+
+checkAuth();
+
+
 /* =====================================================
    LIVE CHAT
    ===================================================== */
@@ -843,48 +1018,47 @@ function displayMessage(message){
 
 async function sendMessage(){
 
-  const nameInput =
-    document.getElementById("chatName");
+  const {data:userData} =
+    await supabaseClient.auth.getUser();
 
-  const messageInput =
-    document.getElementById("chatInput");
+  const user = userData.user;
 
-  const name =
-    nameInput.value.trim();
+  if(!user){
 
-  const content =
-    messageInput.value.trim();
+    alert("Please login first to use the chat.");
 
-  if(!name){
-
-    alert("Please enter your name.");
-
-    nameInput.focus();
+    document.getElementById("auth")
+      .scrollIntoView({behavior:"smooth"});
 
     return;
   }
 
-  if(!content){
+  const messageInput =
+    document.getElementById("chatInput");
 
+  const content =
+    messageInput.value.trim();
+
+  if(!content){
     return;
   }
 
   const {error} =
     await supabaseClient
-    .from("messages")
-    .insert([
-      {
-        name:name,
-        content:content
-      }
-    ]);
+      .from("messages")
+      .insert([
+        {
+          name:user.email || "User",
+          content:content
+        }
+      ]);
 
   if(error){
 
     console.error("Send message error:",error);
 
     alert(
-      "Message send nahi hua. Supabase RLS policies check karo."
+      "Message send nahi hua. Supabase messages INSERT policy check karo."
     );
 
     return;
