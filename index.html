@@ -3,77 +3,91 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GameTool Hub - Free Gaming Tools</title>
+
+<title>GameTool Hub - Free Games & Tools</title>
+<meta name="description" content="Play free online games and use useful free tools on GameTool Hub.">
+<meta name="keywords" content="free games, online games, gaming tools, calculator, password generator, stopwatch">
 
 <style>
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
-  font-family:Arial,sans-serif;
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
-  background:#0b1020;
-  color:white;
+  font-family:Arial, sans-serif;
+  background:#080d1c;
+  color:#fff;
 }
 
 header{
-  padding:20px 7%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:#111831;
   position:sticky;
   top:0;
-  z-index:10;
+  z-index:100;
+  background:#11182e;
+  border-bottom:1px solid #27304d;
+  padding:16px 6%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
 
 .logo{
-  font-size:25px;
+  font-size:24px;
   font-weight:bold;
 }
 
 nav a{
-  color:white;
+  color:#fff;
   text-decoration:none;
-  margin-left:20px;
+  margin-left:22px;
+  font-weight:bold;
+}
+
+nav a:hover{
+  color:#a99cff;
 }
 
 .hero{
   text-align:center;
-  padding:80px 20px;
-  background:linear-gradient(135deg,#151d3b,#202b55);
+  padding:85px 20px;
+  background:linear-gradient(135deg,#121b3a,#29376d);
 }
 
 .hero h1{
-  font-size:48px;
+  font-size:52px;
   margin-bottom:15px;
 }
 
 .hero p{
-  color:#c9d0e8;
-  margin-bottom:25px;
+  color:#d4daf0;
+  font-size:18px;
+  margin-bottom:28px;
 }
 
 .search{
   width:90%;
-  max-width:550px;
-  padding:15px;
+  max-width:600px;
+  padding:16px 20px;
   border:0;
   border-radius:30px;
-  outline:none;
   font-size:16px;
+  outline:none;
 }
 
 section{
-  padding:50px 7%;
+  padding:60px 6%;
 }
 
-h2{
+.section-title{
   text-align:center;
-  margin-bottom:30px;
-  font-size:32px;
+  font-size:36px;
+  margin-bottom:35px;
 }
 
 .grid{
@@ -83,88 +97,191 @@ h2{
 }
 
 .card{
-  background:#151d36;
+  background:#131b34;
+  border:1px solid #252f4d;
   padding:25px;
-  border-radius:15px;
-  transition:.3s;
+  border-radius:18px;
+  transition:.25s;
 }
 
 .card:hover{
-  transform:translateY(-5px);
-  background:#1d2747;
+  transform:translateY(-6px);
+  border-color:#7568ed;
 }
 
 .card h3{
+  font-size:21px;
   margin-bottom:10px;
 }
 
 .card p{
-  color:#b8c0d8;
+  color:#b9c2dc;
+  line-height:1.5;
   margin-bottom:18px;
 }
 
 button{
+  background:#7064e8;
+  color:#fff;
   border:0;
   padding:11px 18px;
-  border-radius:8px;
+  border-radius:9px;
   cursor:pointer;
-  background:#6c5ce7;
-  color:white;
   font-weight:bold;
+  font-size:14px;
 }
 
 button:hover{
   opacity:.85;
 }
 
-.tool{
-  max-width:650px;
-  margin:20px auto;
-  background:#151d36;
-  padding:25px;
-  border-radius:15px;
+.result{
+  background:#090e1e;
+  border:1px solid #293352;
+  padding:14px;
+  border-radius:10px;
+  margin-top:15px;
+  min-height:45px;
+  word-break:break-word;
 }
 
-input,textarea{
+.tool-box{
+  max-width:700px;
+  margin:25px auto;
+  background:#131b34;
+  border:1px solid #252f4d;
+  padding:28px;
+  border-radius:18px;
+}
+
+.tool-box h2{
+  margin-bottom:20px;
+  text-align:center;
+}
+
+input,
+textarea,
+select{
   width:100%;
-  padding:12px;
-  margin:8px 0;
+  padding:13px;
+  margin:7px 0 12px;
   border:0;
-  border-radius:8px;
+  border-radius:9px;
   outline:none;
+  font-size:15px;
 }
 
 textarea{
-  min-height:120px;
+  min-height:130px;
+  resize:vertical;
 }
 
-.result{
-  margin-top:15px;
-  padding:15px;
-  background:#0b1020;
-  border-radius:8px;
-  word-break:break-word;
+.game-buttons{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.big-result{
+  font-size:28px;
+  text-align:center;
+  padding:20px;
+}
+
+.score{
+  text-align:center;
+  margin:15px 0;
+  font-size:18px;
+}
+
+.memory-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+  max-width:400px;
+  margin:20px auto;
+}
+
+.memory-card{
+  height:75px;
+  background:#293352;
+  border-radius:10px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:28px;
+  cursor:pointer;
+}
+
+.memory-card.open{
+  background:#7064e8;
 }
 
 footer{
   text-align:center;
-  padding:30px;
-  background:#111831;
-  color:#aeb6d0;
+  background:#11182e;
+  padding:35px 20px;
+  color:#aeb7d1;
+  margin-top:30px;
+}
+
+footer a{
+  color:#aeb7d1;
+  text-decoration:none;
+  margin:0 8px;
 }
 
 .hidden{
   display:none;
 }
 
+.notice{
+  text-align:center;
+  color:#9da8c7;
+  margin-top:20px;
+}
+
 @media(max-width:600px){
-  .hero h1{
-    font-size:34px;
+
+  header{
+    padding:14px 4%;
+  }
+
+  .logo{
+    font-size:19px;
   }
 
   nav a{
-    margin-left:8px;
-    font-size:14px;
+    margin-left:9px;
+    font-size:13px;
+  }
+
+  .hero{
+    padding:60px 15px;
+  }
+
+  .hero h1{
+    font-size:36px;
+  }
+
+  .hero p{
+    font-size:15px;
+  }
+
+  section{
+    padding:45px 4%;
+  }
+
+  .section-title{
+    font-size:29px;
+  }
+
+  .memory-grid{
+    max-width:320px;
+  }
+
+  .memory-card{
+    height:65px;
   }
 }
 </style>
@@ -173,235 +290,764 @@ footer{
 <body>
 
 <header>
+
   <div class="logo">🎮 GameTool Hub</div>
 
   <nav>
     <a href="#games">Games</a>
     <a href="#tools">Tools</a>
   </nav>
+
 </header>
 
+
 <section class="hero">
+
   <h1>Gaming + Free Tools</h1>
-  <p>Play, calculate, generate and explore useful tools — completely free.</p>
+
+  <p>
+    Play games and use useful online tools — completely free.
+  </p>
 
   <input
-    id="search"
     class="search"
-    type="text"
-    placeholder="Search games or tools..."
-    onkeyup="searchCards()"
+    id="search"
+    placeholder="🔍 Search games or tools..."
+    oninput="searchItems()"
   >
+
 </section>
+
+
+<!-- ================= GAMES ================= -->
 
 <section id="games">
-  <h2>🎮 Gaming</h2>
+
+  <h2 class="section-title">🎮 Free Games</h2>
 
   <div class="grid">
 
+    <!-- Dice -->
+
     <div class="card searchable">
+
       <h3>🎲 Dice Roller</h3>
-      <p>Roll a virtual dice.</p>
+
+      <p>Roll a virtual dice and get a random number.</p>
+
       <button onclick="rollDice()">Roll Dice</button>
-      <div id="diceResult" class="result">🎲</div>
+
+      <div id="diceResult" class="result big-result">
+        🎲
+      </div>
+
     </div>
 
+
+    <!-- Coin -->
+
     <div class="card searchable">
+
       <h3>🪙 Coin Flip</h3>
-      <p>Heads or tails?</p>
-      <button onclick="flipCoin()">Flip Coin</button>
-      <div id="coinResult" class="result">🪙</div>
+
+      <p>Flip the virtual coin.</p>
+
+      <button onclick="flipCoin()">Flip</button>
+
+      <div id="coinResult" class="result big-result">
+        🪙
+      </div>
+
     </div>
 
+
+    <!-- Random Number -->
+
     <div class="card searchable">
-      <h3>🎯 Random Number</h3>
-      <p>Generate a random number.</p>
-      <button onclick="randomNumber()">Generate</button>
-      <div id="randomResult" class="result">?</div>
+
+      <h3>🔢 Guess the Number</h3>
+
+      <p>Guess a number between 1 and 100.</p>
+
+      <input
+        type="number"
+        id="guessInput"
+        placeholder="Enter your guess"
+      >
+
+      <button onclick="guessNumber()">Guess</button>
+
+      <div id="guessResult" class="result">
+        Start guessing!
+      </div>
+
+    </div>
+
+
+    <!-- Rock Paper Scissors -->
+
+    <div class="card searchable">
+
+      <h3>✊ Rock Paper Scissors</h3>
+
+      <p>Play against the computer.</p>
+
+      <div class="game-buttons">
+
+        <button onclick="rps('Rock')">✊ Rock</button>
+
+        <button onclick="rps('Paper')">✋ Paper</button>
+
+        <button onclick="rps('Scissors')">✌️ Scissors</button>
+
+      </div>
+
+      <div id="rpsResult" class="result">
+        Choose your move.
+      </div>
+
+    </div>
+
+
+    <!-- Memory Game -->
+
+    <div class="card searchable">
+
+      <h3>🧠 Memory Game</h3>
+
+      <p>Find matching emoji pairs.</p>
+
+      <button onclick="startMemory()">Start Game</button>
+
+      <div id="memoryGrid" class="memory-grid"></div>
+
+      <div id="memoryResult" class="result">
+        Click Start Game.
+      </div>
+
     </div>
 
   </div>
+
 </section>
+
+
+<!-- ================= TOOLS ================= -->
 
 <section id="tools">
-  <h2>🛠️ Free Tools</h2>
+
+  <h2 class="section-title">🛠️ Free Tools</h2>
 
   <div class="grid">
 
     <div class="card searchable">
+
       <h3>🧮 Calculator</h3>
-      <p>Simple calculator.</p>
-      <button onclick="openTool('calculator')">Open</button>
+
+      <p>Calculate basic mathematical expressions.</p>
+
+      <button onclick="showTool('calculator')">
+        Open Calculator
+      </button>
+
     </div>
 
+
     <div class="card searchable">
+
       <h3>📝 Word Counter</h3>
-      <p>Count words and characters.</p>
-      <button onclick="openTool('words')">Open</button>
+
+      <p>Count words and characters in your text.</p>
+
+      <button onclick="showTool('wordTool')">
+        Open Tool
+      </button>
+
     </div>
 
+
     <div class="card searchable">
+
       <h3>🔐 Password Generator</h3>
-      <p>Create a random password.</p>
-      <button onclick="openTool('password')">Open</button>
+
+      <p>Create a random strong password.</p>
+
+      <button onclick="showTool('passwordTool')">
+        Generate
+      </button>
+
+    </div>
+
+
+    <div class="card searchable">
+
+      <h3>🔄 Unit Converter</h3>
+
+      <p>Convert kilometers, meters and more.</p>
+
+      <button onclick="showTool('converterTool')">
+        Open Converter
+      </button>
+
+    </div>
+
+
+    <div class="card searchable">
+
+      <h3>⏱️ Stopwatch</h3>
+
+      <p>Use an online stopwatch.</p>
+
+      <button onclick="showTool('stopwatchTool')">
+        Open Stopwatch
+      </button>
+
     </div>
 
   </div>
+
 </section>
 
-<!-- Calculator -->
 
-<div id="calculator" class="tool hidden">
+<!-- ================= CALCULATOR ================= -->
+
+<div id="calculator" class="tool-box hidden">
+
   <h2>🧮 Calculator</h2>
 
-  <input id="calcInput" placeholder="Example: 25*4+10">
+  <input
+    id="calcInput"
+    placeholder="Example: 25*4+10"
+  >
 
-  <button onclick="calculate()">Calculate</button>
+  <button onclick="calculate()">
+    Calculate
+  </button>
 
   <div id="calcResult" class="result"></div>
+
 </div>
 
-<!-- Word Counter -->
 
-<div id="words" class="tool hidden">
+<!-- ================= WORD COUNTER ================= -->
+
+<div id="wordTool" class="tool-box hidden">
+
   <h2>📝 Word Counter</h2>
 
   <textarea
     id="wordText"
-    placeholder="Type or paste your text here..."
+    placeholder="Type or paste your text..."
     oninput="countWords()"
   ></textarea>
 
   <div id="wordResult" class="result">
     Words: 0 | Characters: 0
   </div>
+
 </div>
 
-<!-- Password -->
 
-<div id="password" class="tool hidden">
+<!-- ================= PASSWORD ================= -->
+
+<div id="passwordTool" class="tool-box hidden">
+
   <h2>🔐 Password Generator</h2>
 
+  <label>Password length</label>
+
   <input
-    id="passLength"
+    id="passwordLength"
     type="number"
-    value="12"
     min="4"
     max="50"
+    value="14"
   >
 
-  <button onclick="generatePassword()">Generate Password</button>
+  <button onclick="generatePassword()">
+    Generate Password
+  </button>
 
-  <div id="passResult" class="result"></div>
+  <div id="passwordResult" class="result"></div>
+
 </div>
 
+
+<!-- ================= CONVERTER ================= -->
+
+<div id="converterTool" class="tool-box hidden">
+
+  <h2>🔄 Unit Converter</h2>
+
+  <input
+    id="convertValue"
+    type="number"
+    placeholder="Enter value"
+  >
+
+  <select id="convertType">
+
+    <option value="km-m">
+      Kilometers → Meters
+    </option>
+
+    <option value="m-km">
+      Meters → Kilometers
+    </option>
+
+    <option value="kg-g">
+      Kilograms → Grams
+    </option>
+
+    <option value="g-kg">
+      Grams → Kilograms
+    </option>
+
+    <option value="cm-m">
+      Centimeters → Meters
+    </option>
+
+    <option value="m-cm">
+      Meters → Centimeters
+    </option>
+
+  </select>
+
+  <button onclick="convertUnit()">
+    Convert
+  </button>
+
+  <div id="convertResult" class="result"></div>
+
+</div>
+
+
+<!-- ================= STOPWATCH ================= -->
+
+<div id="stopwatchTool" class="tool-box hidden">
+
+  <h2>⏱️ Stopwatch</h2>
+
+  <div
+    id="stopwatchDisplay"
+    class="result big-result"
+  >
+    00:00:00
+  </div>
+
+  <div class="game-buttons">
+
+    <button onclick="startStopwatch()">
+      ▶ Start
+    </button>
+
+    <button onclick="pauseStopwatch()">
+      ⏸ Pause
+    </button>
+
+    <button onclick="resetStopwatch()">
+      🔄 Reset
+    </button>
+
+  </div>
+
+</div>
+
+
+<p class="notice">
+  More games and tools will be added soon 🚀
+</p>
+
+
 <footer>
-  © 2026 GameTool Hub | Free Gaming & Tools Website
+
+  <p>
+    © 2026 GameTool Hub
+  </p>
+
+  <br>
+
+  <a href="#games">Games</a>
+  <a href="#tools">Tools</a>
+
 </footer>
+
 
 <script>
 
-function rollDice(){
+/* ================= SEARCH ================= */
 
-  let number = Math.floor(Math.random()*6)+1;
+function searchItems(){
 
-  document.getElementById("diceResult").innerText =
-    "🎲 You rolled: " + number;
-}
-
-function flipCoin(){
-
-  let result = Math.random()<0.5 ? "Heads 🪙" : "Tails 🪙";
-
-  document.getElementById("coinResult").innerText = result;
-}
-
-function randomNumber(){
-
-  let number = Math.floor(Math.random()*100)+1;
-
-  document.getElementById("randomResult").innerText =
-    number;
-}
-
-function searchCards(){
-
-  let input =
+  const query =
     document.getElementById("search").value.toLowerCase();
 
-  let cards =
+  const cards =
     document.querySelectorAll(".searchable");
 
   cards.forEach(card => {
 
-    let text = card.innerText.toLowerCase();
+    const text =
+      card.innerText.toLowerCase();
 
-    if(text.includes(input)){
-      card.style.display = "";
-    }else{
-      card.style.display = "none";
+    card.style.display =
+      text.includes(query) ? "" : "none";
+
+  });
+
+}
+
+
+/* ================= DICE ================= */
+
+function rollDice(){
+
+  const number =
+    Math.floor(Math.random() * 6) + 1;
+
+  document.getElementById("diceResult").innerText =
+    "🎲 " + number;
+
+}
+
+
+/* ================= COIN ================= */
+
+function flipCoin(){
+
+  const result =
+    Math.random() < 0.5
+    ? "Heads 🪙"
+    : "Tails 🪙";
+
+  document.getElementById("coinResult").innerText =
+    result;
+
+}
+
+
+/* ================= GUESS NUMBER ================= */
+
+let secretNumber =
+  Math.floor(Math.random() * 100) + 1;
+
+function guessNumber(){
+
+  const guess =
+    Number(document.getElementById("guessInput").value);
+
+  const result =
+    document.getElementById("guessResult");
+
+  if(!guess){
+
+    result.innerText =
+      "Please enter a number.";
+
+    return;
+  }
+
+  if(guess === secretNumber){
+
+    result.innerText =
+      "🎉 Correct! You won! New number generated.";
+
+    secretNumber =
+      Math.floor(Math.random() * 100) + 1;
+
+  }
+
+  else if(guess < secretNumber){
+
+    result.innerText =
+      "⬆️ Too low! Try again.";
+
+  }
+
+  else{
+
+    result.innerText =
+      "⬇️ Too high! Try again.";
+
+  }
+
+}
+
+
+/* ================= ROCK PAPER SCISSORS ================= */
+
+function rps(player){
+
+  const choices =
+    ["Rock","Paper","Scissors"];
+
+  const computer =
+    choices[Math.floor(Math.random() * 3)];
+
+  let result = "";
+
+  if(player === computer){
+
+    result = "🤝 Draw!";
+
+  }
+
+  else if(
+
+    (player === "Rock" && computer === "Scissors") ||
+    (player === "Paper" && computer === "Rock") ||
+    (player === "Scissors" && computer === "Paper")
+
+  ){
+
+    result = "🎉 You Win!";
+
+  }
+
+  else{
+
+    result = "😅 Computer Wins!";
+
+  }
+
+  document.getElementById("rpsResult").innerText =
+    "You: " + player +
+    " | Computer: " + computer +
+    " → " + result;
+
+}
+
+
+/* ================= MEMORY GAME ================= */
+
+let memoryFirst = null;
+let memorySecond = null;
+let memoryLock = false;
+let memoryMatches = 0;
+
+const memoryEmojis =
+  ["🍎","🍎","🚀","🚀","🎮","🎮","⭐","⭐"];
+
+function startMemory(){
+
+  const grid =
+    document.getElementById("memoryGrid");
+
+  grid.innerHTML = "";
+
+  memoryFirst = null;
+  memorySecond = null;
+  memoryLock = false;
+  memoryMatches = 0;
+
+  const shuffled =
+    [...memoryEmojis].sort(() => Math.random() - 0.5);
+
+  shuffled.forEach((emoji,index)=>{
+
+    const card =
+      document.createElement("div");
+
+    card.className =
+      "memory-card";
+
+    card.innerText =
+      "?";
+
+    card.dataset.emoji =
+      emoji;
+
+    card.onclick =
+      function(){
+
+        memoryClick(card);
+
+      };
+
+    grid.appendChild(card);
+
+  });
+
+  document.getElementById("memoryResult").innerText =
+    "Find all matching pairs!";
+
+}
+
+
+function memoryClick(card){
+
+  if(memoryLock ||
+     card === memoryFirst ||
+     card.classList.contains("open")){
+
+    return;
+
+  }
+
+  card.classList.add("open");
+
+  card.innerText =
+    card.dataset.emoji;
+
+  if(!memoryFirst){
+
+    memoryFirst = card;
+    return;
+
+  }
+
+  memorySecond = card;
+  memoryLock = true;
+
+  if(memoryFirst.dataset.emoji === memorySecond.dataset.emoji){
+
+    memoryMatches++;
+
+    memoryFirst = null;
+    memorySecond = null;
+    memoryLock = false;
+
+    if(memoryMatches === 4){
+
+      document.getElementById("memoryResult").innerText =
+        "🎉 You found all pairs!";
+
     }
 
-  });
+  }
+
+  else{
+
+    setTimeout(()=>{
+
+      memoryFirst.classList.remove("open");
+      memorySecond.classList.remove("open");
+
+      memoryFirst.innerText = "?";
+      memorySecond.innerText = "?";
+
+      memoryFirst = null;
+      memorySecond = null;
+
+      memoryLock = false;
+
+    },700);
+
+  }
+
 }
 
-function openTool(id){
 
-  document.querySelectorAll(".tool").forEach(tool=>{
-    tool.classList.add("hidden");
-  });
+/* ================= SHOW TOOL ================= */
 
-  document.getElementById(id).classList.remove("hidden");
+function showTool(id){
 
-  document.getElementById(id).scrollIntoView({
+  document
+    .querySelectorAll(".tool-box")
+    .forEach(box => {
+
+      box.classList.add("hidden");
+
+    });
+
+  const tool =
+    document.getElementById(id);
+
+  tool.classList.remove("hidden");
+
+  tool.scrollIntoView({
     behavior:"smooth"
   });
+
 }
+
+
+/* ================= CALCULATOR ================= */
 
 function calculate(){
 
-  let value =
-    document.getElementById("calcInput").value;
+  const input =
+    document.getElementById("calcInput").value.trim();
+
+  const output =
+    document.getElementById("calcResult");
+
+  if(!input){
+
+    output.innerText =
+      "Enter a calculation.";
+
+    return;
+
+  }
+
+  if(!/^[0-9+\-*/().%\s]+$/.test(input)){
+
+    output.innerText =
+      "Invalid calculation.";
+
+    return;
+
+  }
 
   try{
 
-    let result = Function(
-      '"use strict";return (' + value + ')'
-    )();
+    const result =
+      Function('"use strict"; return (' + input + ')')();
 
-    document.getElementById("calcResult").innerText =
+    output.innerText =
       "Result: " + result;
 
-  }catch{
+  }
 
-    document.getElementById("calcResult").innerText =
+  catch{
+
+    output.innerText =
       "Invalid calculation.";
 
   }
+
 }
+
+
+/* ================= WORD COUNTER ================= */
 
 function countWords(){
 
-  let text =
-    document.getElementById("wordText").value.trim();
+  const text =
+    document.getElementById("wordText").value;
 
-  let words =
-    text === "" ? 0 : text.split(/\s+/).length;
+  const trimmed =
+    text.trim();
 
-  let characters =
-    document.getElementById("wordText").value.length;
+  const words =
+    trimmed === ""
+    ? 0
+    : trimmed.split(/\s+/).length;
+
+  const characters =
+    text.length;
 
   document.getElementById("wordResult").innerText =
     "Words: " + words +
     " | Characters: " + characters;
+
 }
+
+
+/* ================= PASSWORD ================= */
 
 function generatePassword(){
 
   let length =
-    Number(document.getElementById("passLength").value);
+    Number(
+      document.getElementById("passwordLength").value
+    );
 
-  let chars =
+  if(length < 4) length = 4;
+  if(length > 50) length = 50;
+
+  const chars =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
 
   let password = "";
@@ -409,14 +1055,137 @@ function generatePassword(){
   for(let i=0;i<length;i++){
 
     password +=
-      chars.charAt(
-        Math.floor(Math.random()*chars.length)
-      );
+      chars[Math.floor(Math.random() * chars.length)];
 
   }
 
-  document.getElementById("passResult").innerText =
+  document.getElementById("passwordResult").innerText =
     password;
+
+}
+
+
+/* ================= CONVERTER ================= */
+
+function convertUnit(){
+
+  const value =
+    Number(
+      document.getElementById("convertValue").value
+    );
+
+  const type =
+    document.getElementById("convertType").value;
+
+  let result;
+
+  if(isNaN(value)){
+
+    document.getElementById("convertResult").innerText =
+      "Enter a valid number.";
+
+    return;
+
+  }
+
+  switch(type){
+
+    case "km-m":
+      result = value * 1000 + " m";
+      break;
+
+    case "m-km":
+      result = value / 1000 + " km";
+      break;
+
+    case "kg-g":
+      result = value * 1000 + " g";
+      break;
+
+    case "g-kg":
+      result = value / 1000 + " kg";
+      break;
+
+    case "cm-m":
+      result = value / 100 + " m";
+      break;
+
+    case "m-cm":
+      result = value * 100 + " cm";
+      break;
+
+  }
+
+  document.getElementById("convertResult").innerText =
+    result;
+
+}
+
+
+/* ================= STOPWATCH ================= */
+
+let stopwatchSeconds = 0;
+let stopwatchTimer = null;
+
+function updateStopwatch(){
+
+  const hours =
+    Math.floor(stopwatchSeconds / 3600);
+
+  const minutes =
+    Math.floor((stopwatchSeconds % 3600) / 60);
+
+  const seconds =
+    stopwatchSeconds % 60;
+
+  const display =
+    String(hours).padStart(2,"0") + ":" +
+    String(minutes).padStart(2,"0") + ":" +
+    String(seconds).padStart(2,"0");
+
+  document.getElementById("stopwatchDisplay").innerText =
+    display;
+
+}
+
+
+function startStopwatch(){
+
+  if(stopwatchTimer !== null){
+    return;
+  }
+
+  stopwatchTimer =
+    setInterval(()=>{
+
+      stopwatchSeconds++;
+
+      updateStopwatch();
+
+    },1000);
+
+}
+
+
+function pauseStopwatch(){
+
+  clearInterval(stopwatchTimer);
+
+  stopwatchTimer = null;
+
+}
+
+
+function resetStopwatch(){
+
+  clearInterval(stopwatchTimer);
+
+  stopwatchTimer = null;
+
+  stopwatchSeconds = 0;
+
+  updateStopwatch();
+
 }
 
 </script>
