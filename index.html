@@ -1500,6 +1500,7 @@ await supabaseClient
 .from("messages")
 .insert([{
 
+user_id:currentUser.id,
 name:name,
 content:content
 
